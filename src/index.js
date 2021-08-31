@@ -1,31 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// const Hello = props => {
-//     return (
-//         <div>
-//             <h1>Hello, {props.name}!</h1>
-//         </div>
-//     )
-// }
-
-// ReactDOM.render(<Hello name="Jeffrey"/>, document.querySelector('#root'));
-
 const App = props => {
-   return( <div>
-        <Hello name="Jeffe"/>
-    </div>
-   )
-}
+  return <Text />;
+};
 
-class Hello extends React.Component{
-    render(){
-        return (
-            <div>
-                <h1>Hello, {this.props.name}!</h1>
-            </div>
-        )
+class Text extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        text: 'Hello World!!'
+      };
     }
-}
+  
+    update(event) {
+      this.setState({ text: event.target.value });
+    }
+  
+    render() {
+      return (
+        <div>
+          <input type="text" onChange={this.update.bind(this)} />
+          <h1>{this.state.text}</h1>
+        </div>
+      );
+    }
+  }
 
-ReactDOM.render(<App/>, document.querySelector("#root"));
+ReactDOM.render(<App />, document.getElementById('root'));
